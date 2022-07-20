@@ -81,7 +81,7 @@ function draw() {
       gameState = END;
     }
     if(shrubsGroup.isTouching(kangaroo)){
-
+score+=1
       shrubsGroup.destroyEach();
     }
   }
@@ -96,6 +96,9 @@ function draw() {
     
     obstaclesGroup.setLifetimeEach(-1);
     shrubsGroup.setLifetimeEach(-1);
+    if(mousePressedOver(restart)){
+    reset();
+    }
     
   }
 
@@ -152,3 +155,12 @@ function spawnObstacles() {
     
   }
 }
+
+function reset(){ gameState = PLAY;
+                 gameOver.visible = false; 
+                 restart.visible = false;
+                 
+                 kangaroo.visible = true; 
+                 kangaroo.changeAnimation("running", kangaroo_running);
+                 obstaclesGroup.destroyEach(); 
+                 shrubsGroup.destroyEach(); score = 0; }
